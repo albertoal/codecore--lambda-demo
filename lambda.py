@@ -33,5 +33,5 @@ def lambda_handler(event, context):
     print "S3 Object Upload time, based on when S3 processed the request: %s" % object_time
  
     # Push metadata to DynamoDB table 
-    print "Pushing values to DynamoDB table %s" % table
+    print "Pushing values to DynamoDB table %s" % os.environ['table_name']
     table.put_item(Item={'FileName':object_name,'FileSize':object_size, 'TimeStamp':object_time})
